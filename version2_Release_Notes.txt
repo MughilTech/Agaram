@@ -1,0 +1,5 @@
+1) Extended for indian languages
+2) usability changes
+    - removed 'Get meaning' button
+    - tooltip configure option
+3) Options page to select prefered local language

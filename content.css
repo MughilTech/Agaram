@@ -1,0 +1,44 @@
+#agaramtooltip
+{
+	background-color: rgb(195, 195, 195);
+	-webkit-border-radius: 10px;
+	-webkit-box-shadow: 5px 5px 6px #000;
+	opacity : 0.9;
+	padding : 10px;
+	font-family: arial, sans-serif;
+	font-size: 9pt;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	height: auto;
+	max-width:300px;
+	min-width: 80px;
+	line-height: normal;
+	text-align: left;
+	color:Black;
+	position: absolute;
+	z-index: 10000;
+}
+
+
+#agaramtooltip ul
+{
+	padding-left:20px;
+	border: 0;
+	margin:0;
+	color:black;
+}
+#agaramtooltip ul li 
+{
+	list-style-type:square;
+	font-size: inherit;
+	color:black;
+	margin-top:2px;
+}
+
+#agaramtooltip  A:link {text-decoration: underline;color:Black}
+#agaramtooltip  A:visited {text-decoration: underline;color:Black}
+#agaramtooltip  A:active {text-decoration: underline;color:Black}	
+#agaramtooltip  A:hover {text-decoration: underline; color: red;}
+
+

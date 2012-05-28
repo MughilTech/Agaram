@@ -1,0 +1,49 @@
+<html>
+<head>
+<script type="text/javascript" src="options.js"></script>
+<style type="text/css">
+		body
+		{
+			background-color: rgb(195, 195, 195);
+			width: 300px;
+			height: 50px;
+		}
+		#dict-link
+		{
+		 float:Right;
+		 font-size: 15px;
+		}
+		#agaram
+		{
+		 height:40px;
+		 width: 80px;
+		}
+		</style>
+
+</head>
+	<body onload="loadOptions()">
+	<div style="padding-left:100px;">  <img src='agaram.png' id="agaram"/>  </div>
+	
+	<div style="text-align:center;margin-bottom:2px">
+	Choose your Indian language preference:
+	 <select id="pref-language" onchange="saveOption()">
+		<option value="bn">Bengali</option>
+		<option value="gu">Gujarati</option>
+		<option value="hi">Hindi</option>
+		<option value="kn">Kananda</option>
+		<option value="ml">Malayalam</option>
+		<option value="mr">Marathi</option>
+		<option value="ta">Tamil</option>
+		<option value="te">Telugu</option>
+	</select>
+	</div>
+	<hr>
+	<div style="float:center;text-align:center">
+	Double Click Tooltip:<br>
+	<input type="range" style="width:30px;float:center" id='dclick' min="0" max="1" step="1" value="" animation="jump" forceValue ="True" onchange="setDClick(this.value)">
+	</br>
+	<span id="dclickText" ></span>
+	</div>
+	<a href="popup.html" id="dict-link"><< Back</a>
+	</body>
+</html>

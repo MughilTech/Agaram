@@ -1,0 +1,27 @@
+{
+  "name": "Agaram - Indian Multilingual Dictionary",
+  "version": "2.0",
+  "description": "Helps to find the meaning of any English/Indian Language word in the browser",
+    "background_page": "background.html",
+  "browser_action": {
+    "default_icon": "icon.png",
+	 "popup": "popup.html",
+	 "options_page": "options.html"
+  },
+  "icons": {
+      "16": "icon16px.png",
+      "48": "icon48px.png",
+      "128": "icon128px.png"
+   },
+  
+ "permissions": [ "tabs", "http://*/*", "https://*/*" ],
+ "content_scripts": [
+    {
+	  "all_frames": true,
+      "matches": [ "http://*/*", "https://*/*" ],
+      "js": ["GetMeaningEnTa.js","ContentScript.js"],
+	  "css": ["content.css"]
+    }
+	]
+	
+}
