@@ -1,0 +1,2 @@
+v3 notes
+1) google api has been made availabale for fee... so picked up an alternative api

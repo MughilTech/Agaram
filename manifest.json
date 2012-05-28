@@ -1,6 +1,6 @@
 {
   "name": "Agaram - Indian Multilingual Dictionary",
-  "version": "2.0",
+  "version": "3.0",
   "description": "Helps to find the meaning of any English/Indian Language word in the browser",
     "background_page": "background.html",
   "browser_action": {
