@@ -26,7 +26,7 @@ function loadOptions()
 	setDClick(dclick);
 }
 
-function saveOption() {
+function saveOption(e) {
   var select = document.getElementById("pref-language");
   var color = select.children[select.selectedIndex].value;
   localStorage["prefLanguage"] = color;
@@ -45,3 +45,14 @@ function setDClick(value)
   }
 }
 
+function setEventDclick(e){
+	setDClick(e.target.value())
+}
+
+function init(){
+	loadOptions();
+	document.getElementById("pref-language").addEventListener("change", saveOption);
+	document.getElementById("dclick").addEventListener("change", setEventDclick);
+}
+
+document.addEventListener('DOMContentLoaded', init);

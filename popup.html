@@ -3,6 +3,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <script type="text/javascript" src="https://www.google.com/jsapi?key=AIzaSyDfvogVwGiihHR6ngvkaCmZsxY2UZOP9R8">
 	</script>
+	<script type="text/javascript" src="GetMeaningEnTa.js"></script>
+	<script type="text/javascript" src="popup.js"></script>
     
 	 <style type="text/css">
 		body
@@ -64,123 +66,13 @@
 		  float:Right;
 		}
 		</style>
-	<script type="text/javascript" src="GetMeaningEnTa.js"></script>
-    <script type="text/javascript">
-	
-	
-google.load("elements", "1", {
-	packages: "transliteration"
-  });
-  
-  
-  
-String.prototype.trim = function () 
-{
-    return this.replace(/^\s*/, "").replace(/\s*$/, "");
-}
-  
-function onLoad() 
-{
-	  
-	  var googleLanguageCodeJson = {
-					"bn" 	: google.elements.transliteration.LanguageCode.BENGALI,
-					"gu"	: google.elements.transliteration.LanguageCode.GUJARATI,
-					"hi"	: google.elements.transliteration.LanguageCode.HINDI,
-					"kn"	: google.elements.transliteration.LanguageCode.KANNADA,
-					"ml"	: google.elements.transliteration.LanguageCode.MALAYALAM,
-					"mr" 	: google.elements.transliteration.LanguageCode.MARATHI,
-					"ta"   	: google.elements.transliteration.LanguageCode.TAMIL,
-					"te"  	: google.elements.transliteration.LanguageCode.TELUGU
-					};
-						
-	var prefLanguage = GetPreferredLanguage();
-	       var options = {
-            sourceLanguage:
-                google.elements.transliteration.LanguageCode.ENGLISH,
-            destinationLanguage:
-                [googleLanguageCodeJson[prefLanguage]],
-            shortcutKey: 'ctrl+g',
-			
-        };
-
-        var control =
-            new google.elements.transliteration.TransliterationControl(options);
-
-        control.makeTransliteratable(['dicWord']);
-      }
-      google.setOnLoadCallback(onLoad);
-	  
-	  
-	
-function getMeaning()
-{
-	var srcWord =  '';
-	if(document.getElementById('dicWord').value.toString().trim() != '')
-	{
-		srcWord = document.getElementById('dicWord').value.toString().trim();
-	}
-	
-	 var meaningRes = GetMeaningHTML(srcWord,GetPreferredLanguage());
-	 if(meaningRes.trim() != '')
-		document.getElementById('dicResult').innerHTML = '<br>' + meaningRes;
-	else if(srcWord != '' )
-	  document.getElementById('dicResult').innerHTML = 'Not found'+ '<br><a href=\'http://www.google.co.in/#hl=en&q='+ srcWord +'\' target="_new">Google "'+ srcWord +'">></a>';
-	
-}
-
-
-function GetPreferredLanguage()
-{
-	  var prefLanguage = localStorage["prefLanguage"];
-	  if(prefLanguage == undefined)
-	   prefLanguage = 'ta';
-	   return prefLanguage;
-
-}
-
-function keyUp(e)
-{
-    if(e.keyCode == 13)	
-	{
-	  getMeaning();
-	  e.stopPropagation();
-	 }
-	else{
-	var bgClr = document.getElementById('dicWord').style.backgroundColor;
-    if(e.ctrlKey  && e.keyCode == 71 && (bgClr == '' || bgClr == 'white'))
-	document.getElementById('dicWord').style.backgroundColor = '#FFF380';
-	else if(e.ctrlKey  && e.keyCode == 71 && bgClr == 'rgb(255, 243, 128)')
-	document.getElementById('dicWord').style.backgroundColor = '';
-	}
-}
-
-function GetLanguageText()
-{
-var langaugeNameJson =
-					{
-					"bn" 	: "Bengali",
-					"gu"	: "Gujarati",
-					"hi"	: "Hindi",
-					"kn"	: "Kananda",
-					"ml"	: "Malayalam",
-					"mr" 	: "Marathi",
-					"ta"   	: "Tamil",
-					"te"  	: "Telugu",
-					"en"	: "English"
-					};
-					
-	var prefLang = langaugeNameJson[GetPreferredLanguage()];
-	document.getElementById('inputText').innerHTML =  'Enter Word (Use ctrl+g to switch between English and '+ prefLang +')'
-	document.getElementById('dicResult').innerHTML = 'Tip: For ease of use, Just double click on any English/'+ prefLang +' word in the browser to view the meaning.' ;
-}
-</script>
  </head>
   
-<body onload="GetLanguageText()" >
+<body>
   <div style="padding-left:150px;">  <img src='agaram.png' id="agaram"/>  </div>
-  <div id="inputText"> </div>
+  <div id="inputText" style="text-align:center"> </div>
   <div id="dicWordContainer">
-  <input type="text" id="dicWord" size='35' onkeyup= 'keyUp(event)' onkeypress ='keyDown(event)'></input></div>
+  <input type="text" id="dicWord" size='35'></input></div>
   <div id="dicResult"></div>
   <a href="options.html" id="ext-opt">Extension options >></a>
 </body>

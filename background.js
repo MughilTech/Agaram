@@ -1,9 +1,3 @@
-<html>
-<script type="text/javascript" src="GetMeaningEnTa.js"></script>
-<script content="text/javascript">
-
-
-
 chrome.extension.onRequest.addListener(
   function(request, sender, sendResponse) {
    if(request.greeting == 'getLocalStorage')
@@ -38,6 +32,3 @@ function GetDClick()
 	   prefLanguage = '0';
 	   return prefLanguage;
 }
-  
-</script>
-</html>

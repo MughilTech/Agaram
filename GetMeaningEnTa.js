@@ -6,11 +6,12 @@ meaningHTML = '';
 
 var tamilXhr= new XMLHttpRequest();
 var isTamil = true;
-    var tamilDictionaryService='http://translate.google.com/translate_a/t?client=t&text='+ word +'&sl=auto&tl='+language;
+    var tamilDictionaryService='http://translate.google.com/translate_a/t?client=p&text='+ word +'&sl=auto&tl='+language;
     tamilXhr.open("GET",tamilDictionaryService,false);
     tamilXhr.onreadystatechange= function()
 	{
-		if(tamilXhr.readyState==4 && eval('('+tamilXhr.responseText+')')[0][0][0] != word )
+		tamilXhrResponse = JSON.parse(tamilXhr.response)
+		if(tamilXhr.readyState==4 && tamilXhrResponse.sentences[0].trans != word )
 		{
 			isTamil = false;
 
@@ -35,11 +36,12 @@ var englishXhr= new XMLHttpRequest();
 if(isTamil)
 {
     var tamilXhr= new XMLHttpRequest();
-    var tamilDictionaryService='http://translate.google.com/translate_a/t?client=t&text='+ word +'&sl=auto&tl=en';
+    var tamilDictionaryService='http://translate.google.com/translate_a/t?client=p&text='+ word +'&sl=auto&tl=en';
     tamilXhr.open("GET",tamilDictionaryService,false);
     tamilXhr.onreadystatechange= function()
 	{
-		if(tamilXhr.readyState==4 && eval(tamilXhr.responseText)[0][0] != word )
+		tamilXhrResponse = JSON.parse(tamilXhr.response)
+		if(tamilXhr.readyState==4 && tamilXhrResponse.sentences[0].trans != word )
 		{
 			
 			loadResult(tamilXhr,word, true, "en");
@@ -56,20 +58,18 @@ function loadResult(xhr,word, isTranslate, targetLan)
 {
 		var responseJson = xhr.responseText;
 	
-		responseJson=responseJson.replace("dict_api.callbacks.id100(","");
-		responseJson=responseJson.replace(",200,null)","");
-		var dicWords=eval('(' +responseJson+')');
+		responseJson=responseJson.replace("dict_api.callbacks.id100(","").replace(",200,null)","").replace(/\\x/g,"\\u00");
+		var dicWords=JSON.parse(responseJson); 
 		var langaugeNameJson =
 					{
 					"bn" 	: "Bengali",
 					"gu"	: "Gujarati",
 					"hi"	: "Hindi",
 					"kn"	: "Kananda",
-					"ml"	: "Malayalam",
-					"mr" 	: "Marathi",
 					"ta"   	: "Tamil",
 					"te"  	: "Telugu",
-					"en"	: "English"
+					"en"	: "English",
+					"ur"	: "Urdu", 
 					};
 		
 		var link = '<b>'+langaugeNameJson[targetLan]+':</b>';
@@ -92,7 +92,7 @@ function loadResult(xhr,word, isTranslate, targetLan)
 			}
 		}
 		else			 
-			finalResult =  '<li>' + dicWords[0][0][0] + '</li>';
+			finalResult =  '<li>' + dicWords.sentences[0].trans + '</li>';
 		finalResult = finalResult + '</ul>';
 		var separator = '';
 		if(meaningHTML != '')
