@@ -46,7 +46,7 @@ function setDClick(value)
 }
 
 function setEventDclick(e){
-	setDClick(e.target.value())
+	setDClick(e.target.value)
 }
 
 function init(){
