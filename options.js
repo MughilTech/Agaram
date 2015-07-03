@@ -1,9 +1,9 @@
 var defaultLanguage = "ta";
 
-function loadOptions() 
+function loadOptions()
 {
 	var lang = localStorage["prefLanguage"];
-	if (lang == undefined) 
+	if (lang == undefined)
 	{
 		lang = defaultLanguage;
 	}
@@ -16,7 +16,7 @@ function loadOptions()
 			break;
 		}
 	}
-	
+
 	var dclick = localStorage["DClick"];
 	if( dclick == undefined )
 	{
@@ -34,7 +34,7 @@ function saveOption(e) {
 
 function setDClick(value)
 {
-  localStorage["DClick"] = value; 
+  localStorage["DClick"] = value;
   if(value == '0')
   {
    document.getElementById("dclickText").innerHTML = '<b>Enabled</b>';

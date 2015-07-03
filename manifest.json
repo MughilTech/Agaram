@@ -17,7 +17,7 @@
       "48": "icon48px.png",
       "128": "icon128px.png"
    },
-  
+
  "permissions": [ "tabs", "http://*/*", "https://*/*" ],
  "content_scripts": [
     {
@@ -28,9 +28,9 @@
     }
 	],
   "web_accessible_resources": [
-        "close.jpg", 
+        "close.jpg",
         "disable.jpg"
     ],
   "content_security_policy": "connect-src *; script-src 'self' https://www.google.com/; object-src 'self'"
-	
+
 }

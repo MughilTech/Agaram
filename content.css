@@ -28,7 +28,7 @@
 	margin:0;
 	color:black;
 }
-#agaramtooltip ul li 
+#agaramtooltip ul li
 {
 	list-style-type:square;
 	font-size: inherit;
@@ -38,7 +38,7 @@
 
 #agaramtooltip  A:link {text-decoration: underline;color:Black}
 #agaramtooltip  A:visited {text-decoration: underline;color:Black}
-#agaramtooltip  A:active {text-decoration: underline;color:Black}	
+#agaramtooltip  A:active {text-decoration: underline;color:Black}
 #agaramtooltip  A:hover {text-decoration: underline; color: red;}
 
 

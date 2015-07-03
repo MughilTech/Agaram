@@ -17,7 +17,7 @@ chrome.extension.onRequest.addListener(
 	  sendResponse(meaningHTML);
 	  }
   });
-  
+
   function GetPreferredLanguage()
 {
 	  var prefLanguage = localStorage["prefLanguage"];

@@ -18,9 +18,9 @@ var isTamil = true;
 			loadResult(tamilXhr,word, true,language	);
 		}
 	};
-    tamilXhr.send();  
+    tamilXhr.send();
 
-	
+
 var englishXhr= new XMLHttpRequest();
     var englishDictionaryService='http://www.google.com/dictionary/json?callback=dict_api.callbacks.id100&q='+word+'&sl=en&tl=en';
     englishXhr.open("GET",englishDictionaryService,false);
@@ -31,7 +31,7 @@ var englishXhr= new XMLHttpRequest();
 			loadResult(englishXhr,word,false,"en" );
 		}
 	};
-    englishXhr.send();  	
+    englishXhr.send();
 
 if(isTamil)
 {
@@ -43,11 +43,11 @@ if(isTamil)
 		tamilXhrResponse = JSON.parse(tamilXhr.response)
 		if(tamilXhr.readyState==4 && tamilXhrResponse.sentences[0].trans != word )
 		{
-			
+
 			loadResult(tamilXhr,word, true, "en");
 		}
 	};
-    tamilXhr.send();  
+    tamilXhr.send();
 }
 	return meaningHTML;
 }
@@ -57,9 +57,9 @@ if(isTamil)
 function loadResult(xhr,word, isTranslate, targetLan)
 {
 		var responseJson = xhr.responseText;
-	
+
 		responseJson=responseJson.replace("dict_api.callbacks.id100(","").replace(",200,null)","").replace(/\\x/g,"\\u00");
-		var dicWords=JSON.parse(responseJson); 
+		var dicWords=JSON.parse(responseJson);
 		var langaugeNameJson =
 					{
 					"bn" 	: "Bengali",
@@ -69,18 +69,18 @@ function loadResult(xhr,word, isTranslate, targetLan)
 					"ta"   	: "Tamil",
 					"te"  	: "Telugu",
 					"en"	: "English",
-					"ur"	: "Urdu", 
+					"ur"	: "Urdu",
 					};
-		
+
 		var link = '<b>'+langaugeNameJson[targetLan]+':</b>';
-		
+
 		var finalResult = '<ul>';
 		if(!isTranslate)
 		{
 			var dicWordEntries=dicWords.primaries[0].entries;
-			var length = dicWordEntries.length 
+			var length = dicWordEntries.length
 			var counter = 0;
-			for(var i = 0; i < length ; i++) 
+			for(var i = 0; i < length ; i++)
 			{
 			 if(dicWordEntries[i].type == 'meaning')
 			   {
@@ -91,11 +91,11 @@ function loadResult(xhr,word, isTranslate, targetLan)
 			   }
 			}
 		}
-		else			 
+		else
 			finalResult =  '<li>' + dicWords.sentences[0].trans + '</li>';
 		finalResult = finalResult + '</ul>';
 		var separator = '';
 		if(meaningHTML != '')
 		 separator = '<br>';
-		meaningHTML = meaningHTML + separator + link  + finalResult;	
+		meaningHTML = meaningHTML + separator + link  + finalResult;
 }

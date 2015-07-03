@@ -1,11 +1,11 @@
-String.prototype.trim = function () 
+String.prototype.trim = function ()
 {
 	return this.replace(/^\s*/, "").replace(/\s*$/, "");
 }
 
 
 
-// function onLoad() 
+// function onLoad()
 // {
 // 	var googleLanguageCodeJson = {
 // 		"bn" 	: google.elements.transliteration.LanguageCode.BENGALI,
@@ -48,13 +48,13 @@ function getMeaning()
 	{
 		srcWord = document.getElementById('dicWord').value.toString().trim();
 	}
-	
+
 	var meaningRes = GetMeaningHTML(srcWord,GetPreferredLanguage());
 	if(meaningRes.trim() != '')
 		document.getElementById('dicResult').innerHTML = '<br>' + meaningRes;
 	else if(srcWord != '' )
 		document.getElementById('dicResult').innerHTML = 'Not found'+ '<br><a href=\'http://www.google.co.in/#hl=en&q='+ srcWord +'\' target="_new">Google "'+ srcWord +'">></a>';
-	
+
 }
 
 
@@ -69,7 +69,7 @@ function GetPreferredLanguage()
 
 function keyUp(e)
 {
-	if(e.keyCode == 13)	
+	if(e.keyCode == 13)
 	{
 		getMeaning();
 		e.stopPropagation();
